@@ -1,23 +1,22 @@
-body {
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    padding: 30px;
+let books = [];
+
+function addBook() {
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+
+    if (title && author) {
+        books.push({ title, author });
+        displayBooks();
+    }
 }
 
-input {
-    padding: 10px;
-    margin: 5px;
-}
+function displayBooks() {
+    let list = document.getElementById("bookList");
+    list.innerHTML = "";
 
-button {
-    padding: 10px;
-    background: #38bdf8;
-    border: none;
-    cursor: pointer;
-}
-
-ul {
-    list-style: none;
+    books.forEach(book => {
+        let li = document.createElement("li");
+        li.textContent = book.title + " - " + book.author;
+        list.appendChild(li);
+    });
 }
